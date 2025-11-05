@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr" id="htmlTag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complexe Scolaire Privé de la Madone - Ouagadougou</title>
+    <!-- Importation de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuration de Tailwind (pour la police Inter et les couleurs) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'ecole-primaire': {
+                            'bleu': '#2563EB', // Bleu plus soutenu
+                            'jaune': '#F59E0B', // Jaune/Orange
+                            'vert': '#059669', // Vert soutenu
+                            'fond-clair': '#F0FDF4', // Vert très clair pour le fond
+                            'texte': '#1F2937', // Texte sombre
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Ajout d'un défilement fluide pour les ancres */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Style pour le drapeau actif */
+        .lang-btn.active, .lang-btn-m.active {
+            border-bottom: 2px solid #2563EB;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-sans bg-ecole-primaire-fond-clair text-ecole-primaire-texte antialiased">
+
+    <!-- Barre de navigation -->
+    <nav class="bg-white shadow-md p-5 fixed w-full top-0 z-20">
+        <div class="container mx-auto flex justify-between items-center max-w-6xl px-4">
+            <a href="#accueil" class="text-lg md:text-xl font-bold text-ecole-primaire-bleu truncate">
+                Complexe Scolaire Privé de la Madone
+            </a>
+            
+            <!-- Menu principal pour ordinateur -->
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#accueil" class="text-gray-700 hover:text-ecole-primaire-bleu transition-colors font-medium" data-lang="nav_home">Accueil</a>
+                <a href="#formation" class="text-gray-700 hover:text-ecole-primaire-bleu transition-colors font-medium" data-lang="nav_training">Formation</a>
+                <a href="#contact" class="bg-ecole-primaire-jaune hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-lang="nav_contact">Contact</a>
+                
+                <!-- Sélecteur de langue -->
+                <div class="flex space-x-2 ml-4">
+                    <button id="lang-fr" class="lang-btn active p-1" onclick="switchLanguage('fr')">
+                        <img src="https://flagcdn.com/w20/fr.png" alt="Français">
+                    </button>
+                    <button id="lang-en" class="lang-btn p-1 opacity-50" onclick="switchLanguage('en')">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bouton pour menu mobile -->
+            <div class="md:hidden flex items-center">
+                 <!-- Sélecteur de langue (Mobile) -->
+                 <div class="flex space-x-2 mr-4">
+                    <button id="lang-fr-m" class="lang-btn-m active p-1" onclick="switchLanguage('fr')">
+                        <img src="https://flagcdn.com/w20/fr.png" alt="Français">
+                    </button>
+                    <button id="lang-en-m" class="lang-btn-m p-1 opacity-50" onclick="switchLanguage('en')">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English">
+                    </button>
+                </div>
+                <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Menu mobile (caché par défaut) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute left-0 top-[76px] w-full z-10">
+            <a href="#accueil" class="block text-center py-3 px-4 text-gray-700 hover:bg-gray-100" data-lang="nav_home">Accueil</a>
+            <a href="#formation" class="block text-center py-3 px-4 text-gray-700 hover:bg-gray-100" data-lang="nav_training">Formation</a>
+            <a href="#contact" class="block text-center py-3 px-4 text-gray-700 hover:bg-gray-100" data-lang="nav_contact_mobile">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Section Accueil / À Propos -->
+    <header id="accueil" class="pt-32 pb-20 min-h-screen flex items-center relative overflow-hidden bg-white">
+        <div class="container mx-auto px-6 max-w-6xl z-10 grid md:grid-cols-2 gap-10 items-center">
+            <!-- Colonne Texte -->
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-ecole-primaire-texte" data-lang="hero_title">
+                    Bienvenue au <span class="text-ecole-primaire-bleu">Complexe Scolaire Privé de la Madone</span>
+                </h1>
+                <div class="text-lg text-gray-600 mb-10" data-lang="hero_desc">
+                    <p>Le Complexe Scolaire Privé de la Madone offre un enseignement de qualité et une éducation complète, personnalisée et adaptée à chaque enfant.</p>
+                    <br>
+                    <p>De la maternelle au primaire, nous formons des élèves curieux, responsables et ouverts sur le monde, avec un apprentissage du français, de l’anglais et de l’espagnol.
+                    Nos résultats témoignent de notre engagement : 100 % de réussite au CEP (Certificat d’Études Primaires) et 100 % de réussite au test d’entrée en 6ᵉ.</p>
+                    <br>
+                    <p>Chaque année, nos élèves figurent parmi les meilleurs de l’agglomération, grâce à un encadrement attentif et une pédagogie exigeante orientée vers la réussite.</p>
+                </div>
+                <a href="#contact" class="bg-ecole-primaire-bleu text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-blue-700 transition-transform transform hover:scale-105" data-lang="hero_cta">
+                    Nous contacter
+                </a>
+            </div>
+            <!-- Colonne Image -->
+            <div class="hidden md:block">
+                <!-- Image d'accueil (image de classe ensoleillée) -->
+                <img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Enfants souriants à l'école primaire" class="rounded-2xl shadow-xl w-full h-auto object-cover" style="max-height: 450px;">
+            </div>
+        </div>
+    </header>
+
+    <!-- Section Formation -->
+    <section id="formation" class="py-24 bg-ecole-primaire-fond-clair">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="text-4xl font-bold text-center mb-16 text-ecole-primaire-texte" data-lang="training_title">
+                Notre Offre de Formation
+            </h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                
+                <!-- Carte 1: Maternelle -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <!-- IMAGE MISE A JOUR (liée par l'utilisateur) -->
+                    <img src="https://i.ibb.co/Z60X69dv/Etre-en-contact-avec-la-nature-durant-l-enfance.jpg" alt="Enfants en maternelle jouant dehors" class="w-full h-48 object-cover">
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-3 text-ecole-primaire-bleu" data-lang="training_card1_title">Maternelle</h3>
+                        <p class="text-gray-600 flex-grow" data-lang="training_card1_desc">
+                            Un environnement d'éveil sécurisé et stimulant pour les premiers apprentissages de vos enfants (Petite, Moyenne et Grande Section).
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Carte 2: Primaire -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <!-- IMAGE MISE A JOUR (liée par l'utilisateur) -->
+                    <img src="https://i.ibb.co/7JWvfFCR/PRIMAIRE.jpg" alt="Élèves de primaire en classe" class="w-full h-48 object-cover">
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-3 text-ecole-primaire-vert" data-lang="training_card2_title">Primaire</h3>
+                        <p class="text-gray-600 flex-grow" data-lang="training_card2_desc">
+                            Acquisition des savoirs fondamentaux (lire, écrire, compter) et ouverture au monde, du CP au CM2.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Carte 3: Langues -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <!-- Image pour les Langues -->
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzE3ODR8MHwxfGFsbHx8fHx8fHx8fDE3MjE1NDk1MDJ8&ixid=rb-4.0.3&q=80&w=1000" alt="Globe terrestre et livres représentant l'apprentissage des langues" class="w-full h-48 object-cover">
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-3 text-ecole-primaire-jaune" data-lang="training_card3_title">Langues Vivantes</h3>
+                        <p class="text-gray-600 flex-grow" data-lang="training_card3_desc">
+                            Apprentissage précoce et approfondi du Français, de l'Anglais et de l'Espagnol dès le plus jeune âge.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-4xl font-bold text-center mb-4 text-ecole-primaire-texte" data-lang="contact_title">
+                Contact & Inscription
+            </h2>
+            <p class="text-center text-lg text-gray-600 mb-12" data-lang="contact_subtitle">
+                Pour toute demande d'information ou pour une pré-inscription, n'hésitez pas à nous contacter.
+            </p>
+            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
+                <form action="mailto:nouveau.horizon.acces@gmail.com" method="post" enctype="text/plain">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="nom" class="block text-sm font-medium text-gray-700 mb-2" data-lang="form_lastname">Nom de l'enfant</label>
+                            <input type="text" id="nom" name="Nom" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-ecole-primaire-bleu focus:border-ecole-primaire-bleu">
+                        </div>
+                        <div>
+                            <label for="prenom" class="block text-sm font-medium text-gray-700 mb-2" data-lang="form_firstname">Prénom de l'enfant</label>
+                            <input type="text" id="prenom" name="Prenom" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-ecole-primaire-bleu focus:border-ecole-primaire-bleu">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="annee" class="block text-sm font-medium text-gray-700 mb-2" data-lang="form_year">Année souhaitée d’inscription</label>
+                        <input type="text" id="annee" name="Annee_Inscription" placeholder="Ex: 2024-2025" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-ecole-primaire-bleu focus:border-ecole-primaire-bleu">
+                    </div>
+                    <div class="mb-8">
+                        <label for="telephone" class="block text-sm font-medium text-gray-700 mb-2" data-lang="form_phone">Votre numéro de téléphone</label>
+                        <input type="tel" id="telephone" name="Telephone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-ecole-primaire-bleu focus:border-ecole-primaire-bleu">
+                    </div>
+                    <div class="mb-8">
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2" data-lang="form_message">Votre Message (optionnel)</label>
+                        <textarea id="message" name="Message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-ecole-primaire-bleu focus:border-ecole-primaire-bleu"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="w-full md:w-auto bg-ecole-primaire-jaune hover:bg-yellow-500 text-white font-bold py-3 px-10 rounded-lg text-lg transition-colors" data-lang="form_submit">
+                            Envoyer la demande
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer class="py-16 bg-ecole-primaire-texte text-gray-300">
+        <div class="container mx-auto px-6 text-center md:text-left max-w-6xl grid md:grid-cols-3 gap-8">
+            <!-- Colonne 1: À propos -->
+            <div>
+                <h4 class="font-bold text-white text-lg mb-3">Complexe Scolaire Privé de la Madone</h4>
+                <p class="text-gray-400" data-lang="footer_desc">
+                    Un cadre d'excellence pour l'épanouissement scolaire et personnel de vos enfants.
+                </p>
+                <p class="text-gray-400 mt-2" data-lang="footer_founded">Créé en 2016.</p>
+            </div>
+            <!-- Colonne 2: Liens Rapides -->
+            <div>
+                <h4 class="font-bold text-white text-lg mb-3" data-lang="footer_nav">Navigation</h4>
+                <ul>
+                    <li><a href="#accueil" class="hover:text-white transition-colors" data-lang="nav_home">Accueil</a></li>
+<li><a href="#formation" class="hover:text-white transition-colors" data-lang="nav_training">Formation</a></li>
+                    <li><a href="#contact" class="hover:text-white transition-colors" data-lang="nav_contact_footer">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Colonne 3: Contacts -->
+            <div>
+                <h4 class="font-bold text-white text-lg mb-3" data-lang="footer_contact">Nous trouver</h4>
+                <p class="text-gray-400">Ouagadougou, quartier Garghin<br>Burkina Faso</p>
+                <p class="text-gray-400 mt-3">
+                    <span class="block">Tél : +226 70 73 96 23</span>
+                    <span class="block">Tél : +226 70 13 73 58</span>
+                </p>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 max-w-6xl text-center border-t border-gray-700 mt-12 pt-8">
+            <p class="text-gray-500" data-lang="footer_copyright">
+                &copy; 2025 Complexe Scolaire Privé de la Madone. Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script pour la traduction et le menu mobile -->
+    <script>
+        // --- GESTION DU MENU MOBILE ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('#mobile-menu a, .hidden.md\\:flex a[href^="#"]');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // --- SYSTÈME DE TRADUCTION ---
+
+        const translations = {
+            'fr': {
+                'nav_home': 'Accueil',
+                'nav_training': 'Formation',
+                'nav_contact': 'Contact',
+                'nav_contact_mobile': 'Contact',
+                'hero_title': 'Bienvenue au <span class="text-ecole-primaire-bleu">Complexe Scolaire Privé de la Madone</span>',
+                'hero_desc': `
+                    <p>Le Complexe Scolaire Privé de la Madone offre un enseignement de qualité et une éducation complète, personnalisée et adaptée à chaque enfant.</p>
+                    <br>
+                    <p>De la maternelle au primaire, nous formons des élèves curieux, responsables et ouverts sur le monde, avec un apprentissage du français, de l’anglais et de l’espagnol.
+                    Nos résultats témoignent de notre engagement : 100 % de réussite au CEP (Certificat d’Études Primaires) et 100 % de réussite au test d’entrée en 6ᵉ.</p>
+                    <br>
+                    <p>Chaque année, nos élèves figurent parmi les meilleurs de l’agglomération, grâce à un encadrement attentif et une pédagogie exigeante orientée vers la réussite.</p>
+                `,
+                'hero_cta': 'Nous contacter',
+                'training_title': 'Notre Offre de Formation',
+                'training_card1_title': 'Maternelle',
+                'training_card1_desc': "Un environnement d'éveil sécurisé et stimulant pour les premiers apprentissages de vos enfants (Petite, Moyenne et Grande Section).",
+                'training_card2_title': 'Primaire',
+                'training_card2_desc': 'Acquisition des savoirs fondamentaux (lire, écrire, compter) et ouverture au monde, du CP au CM2.',
+                'training_card3_title': 'Langues Vivantes',
+                'training_card3_desc': 'Apprentissage précoce et approfondi du Français, de l\'Anglais et de l\'Espagnol dès le plus jeune âge.', // <-- CORRECTION ICI
+                'contact_title': 'Contact & Inscription',
+                'contact_subtitle': "Pour toute demande d'information ou pour une pré-inscription, n'hésitez pas à nous contacter.",
+                'form_lastname': "Nom de l'enfant",
+                'form_firstname': "Prénom de l'enfant",
+                'form_year': 'Année souhaitée d’inscription',
+                'form_phone': 'Votre numéro de téléphone',
+                'form_message': 'Votre Message (optionnel)',
+                'form_submit': 'Envoyer la demande',
+                'footer_desc': "Un cadre d'excellence pour l'épanouissement scolaire et personnel de vos enfants.",
+                'footer_founded': 'Créé en 2016.',
+                'footer_nav': 'Navigation',
+                'footer_contact': 'Nous trouver',
+                'footer_copyright': '© 2025 Complexe Scolaire Privé de la Madone. Tous droits réservés.'
+            },
+            'en': {
+                'nav_home': 'Home',
+                'nav_training': 'Programs',
+                'nav_contact': 'Contact',
+                'nav_contact_mobile': 'Contact',
+                'hero_title': 'Welcome to the <span class="text-ecole-primaire-bleu">Complexe Scolaire Privé de la Madone</span>',
+                'hero_desc': `
+                    <p>The Complexe Scolaire Privé de la Madone offers quality teaching and a complete education, personalized and adapted to each child.</p>
+                    <br>
+                    <p>From kindergarten to primary school, we train curious, responsible, and open-minded students, with instruction in French, English, and Spanish. Our results reflect our commitment: 100% success rate on the CEP (Primary Studies Certificate) and 100% success on the 6th-grade entrance exam.</p>
+                    <br>
+                    <p>Every year, our students rank among the best in the city, thanks to attentive supervision and a demanding pedagogy focused on success.</p>
+                `,
+                'hero_cta': 'Contact Us',
+                'training_title': 'Our Educational Programs',
+                'training_card1_title': 'Kindergarten',
+                'training_card1_desc': 'A safe and stimulating environment for your children\'s first learning experiences (Preschool, Junior, and Senior Kindergarten).',
+                'training_card2_title': 'Primary School',
+                'training_card2_desc': 'Acquisition of fundamental knowledge (reading, writing, counting) and opening up to the world, from 1st to 6th grade.',
+                'training_card3_title': 'Modern Languages',
+                'training_card3_desc': 'Early and in-depth learning of French, English, and Spanish from a young age.',
+                'contact_title': 'Contact & Registration',
+                'contact_subtitle': 'For any information request or for pre-registration, do not hesitate to contact us.',
+                'form_lastname': "Child's Last Name",
+                'form_firstname': "Child's First Name",
+                'form_year': 'Desired Year of Enrollment',
+                'form_phone': 'Your Phone Number',
+                'form_message': 'Your Message (optional)',
+                'form_submit': 'Send Request',
+                'footer_desc': 'A framework of excellence for the academic and personal growth of your children.',
+                'footer_founded': 'Established in 2016.',
+                'footer_nav': 'Navigation',
+                'footer_contact': 'Find Us',
+                'footer_copyright': '© 2025 Complexe Scolaire Privé de la Madone. All rights reserved.'
+            }
+        };
+
+        function switchLanguage(lang) {
+            // Mettre à jour la langue de la page
+            document.getElementById('htmlTag').lang = lang;
+
+            // Mettre à jour les boutons de langue (bureau et mobile)
+            document.querySelectorAll('.lang-btn, .lang-btn-m').forEach(btn => {
+                btn.classList.add('opacity-50');
+                btn.classList.remove('active', 'opacity-100');
+            });
+            document.getElementById(`lang-${lang}`).classList.add('active', 'opacity-100');
+            document.getElementById(`lang-${lang}`).classList.remove('opacity-50');
+            document.getElementById(`lang-${lang}-m`).classList.add('active', 'opacity-100');
+            document.getElementById(`lang-${lang}-m`).classList.remove('opacity-50');
+
+            // Traduire tout le contenu
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) {
+                    // Utiliser innerHTML pour les éléments qui contiennent du HTML (comme le titre et la description)
+                    if (key === 'hero_title' || key === 'hero_desc') {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        // Utiliser textContent pour tous les autres (plus sûr)
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Mettre à jour les placeholders du formulaire
+            const placeholderYear = document.getElementById('annee');
+            if (lang === 'fr') {
+                placeholderYear.placeholder = "Ex: 2024-2025";
+            } else {
+                placeholderYear.placeholder = "E.g.: 2024-2025";
+            }
+        }
+        
+        // Mettre à jour l'année du copyright automatiquement
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const year = new Date().getFullYear();
+            document.querySelectorAll('[data-lang="footer_copyright"]').forEach(el => {
+                el.innerHTML = el.innerHTML.replace('2025', year);
+            });
+            // Mettre à jour la traduction anglaise aussi
+            translations.en.footer_copyright = translations.en.footer_copyright.replace('2025', year);
+        });
+    </script>
+
+</body>
+</html>
